@@ -1,0 +1,26 @@
+import { Route, Routes } from "react-router";
+
+import MainLayout from "./layouts/MainLayout";
+import CreateEvents from "./pages/CreateEvents";
+import EventDetails from "./pages/EventsDetails";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Register from "./pages/Register";
+
+const App = () => {
+  return (
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/createevents" element={<CreateEvents />} />
+        <Route path="/eventdetails/:eventid" element={<EventDetails />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
+  );
+};
+
+export default App;
