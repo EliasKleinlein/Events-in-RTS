@@ -18,8 +18,14 @@ const CreateEvents = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formattedFormData = {
+      ...formData,
+      date: new Date(formData.date).toISOString(),
+    };
+
     //TODO: API POST
-    console.log("Form submitted with:", formData);
+    console.log("Form submitted with:", formattedFormData);
   };
 
   return (
