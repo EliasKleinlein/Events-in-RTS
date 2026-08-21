@@ -48,9 +48,8 @@ const CreateEvents = () => {
           <label className="label" htmlFor="description">
             Description
           </label>
-          <input
-            type="text"
-            className="input"
+          <textarea
+            className="textarea"
             name="description"
             id="description"
             value={formData.description}
