@@ -14,6 +14,7 @@ const CreateEvents = () => {
   };
   const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,10 +43,13 @@ const CreateEvents = () => {
     };
 
     try {
+      setIsLoading(true);
       const data = await createEvent(formattedFormData);
       navigate(`/eventsdetails/${data.id}`);
     } catch (error) {
       setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -54,7 +58,7 @@ const CreateEvents = () => {
       <h2>Create a new Event</h2>
       <form onSubmit={handleSubmit}>
         <fieldset className="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-          <legend className="fieldset-legend"></legend>
+          <legend className="fieldset-legend">Event Information</legend>
           <label className="label" htmlFor="title">
             Title
           </label>
@@ -98,7 +102,9 @@ const CreateEvents = () => {
             value={formData.date}
             onChange={handleChange}
           />
-          <button className="btn btn-neutral mt-4">Submit</button>
+          <button className="btn btn-neutral mt-4" disabled={isLoading}>
+            {isLoading ? "Submitting..." : "Submit"}
+          </button>
           {error && (
             <div role="alert" className="alert alert-error alert-soft">
               <span>{error}</span>
