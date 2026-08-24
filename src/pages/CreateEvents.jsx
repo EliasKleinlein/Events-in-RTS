@@ -1,8 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 import { createEvent } from "../api/fetch";
 
 const CreateEvents = () => {
+  const navigate = useNavigate();
+
   const initialState = {
     title: "",
     description: "",
@@ -40,6 +43,7 @@ const CreateEvents = () => {
 
     try {
       const data = await createEvent(formattedFormData);
+      navigate(`/eventsdetails/${data.id}`);
     } catch (error) {
       setError(error.message);
     }
