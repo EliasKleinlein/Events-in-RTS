@@ -34,13 +34,19 @@ export const getEventById = async (eventId) => {
 
   return data;
 };
-export const registerUser = async (userData) => {
-  const data = await apiFetch("/users", jsonOptions("POST", userData));
+export const registerUser = async (email, password) => {
+  const data = await apiFetch(
+    "/users",
+    jsonOptions("POST", { email, password }),
+  );
 
   return data;
 };
-export const loginUser = async (credentials) => {
-  const data = await apiFetch("/auth/login", jsonOptions("POST", credentials));
+export const loginUser = async (email, password) => {
+  const data = await apiFetch(
+    "/auth/login",
+    jsonOptions("POST", { email, password }),
+  );
 
   return data;
 };
