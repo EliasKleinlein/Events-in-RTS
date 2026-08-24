@@ -35,7 +35,7 @@ const Home = () => {
         <Link
           key={event.id}
           to={`/eventsdetails/${event.id}`}
-          className="card bg-base-100 shadow-xl transition-shadow hover:shadow-2xl"
+          className="card bg-amber-900 shadow-xl transition-shadow hover:shadow-2xl"
         >
           <div className="card-body">
             <h2 className="card-title">{event.title}</h2>

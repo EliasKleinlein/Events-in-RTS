@@ -1,12 +1,21 @@
+import { getToken } from "../utils/tokenStorage";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
-const jsonOptions = (method, body) => ({
-  method,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify(body),
-});
+const jsonOptions = (method, body) => {
+  const token = getToken();
+  const options = {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
+  if (token) {
+    options.headers.Authorization = `Bearer ${token}`;
+  }
+  return options;
+};
 
 export const apiFetch = async (endpoint, options = {}) => {
   let response;
