@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { createEvent } from "../api/fetch";
+
 const CreateEvents = () => {
   const initialState = {
     title: "",
@@ -24,8 +26,7 @@ const CreateEvents = () => {
       date: new Date(formData.date).toISOString(),
     };
 
-    //TODO: API POST
-    console.log("Form submitted with:", formattedFormData);
+    createEvent(formattedFormData);
   };
 
   return (
