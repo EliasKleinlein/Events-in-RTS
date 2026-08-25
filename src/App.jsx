@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router";
 
+import ProtectedRoute from "./components/ProtectedRoute";
 import MainLayout from "./layouts/MainLayout";
 import CreateEvents from "./pages/CreateEvents";
 import EventDetails from "./pages/EventsDetails";
@@ -15,7 +16,14 @@ const App = () => {
         <Route index element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/createevents" element={<CreateEvents />} />
+        <Route
+          path="/createevents"
+          element={
+            <ProtectedRoute>
+              <CreateEvents />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/eventsdetails/:eventid" element={<EventDetails />} />
         <Route path="*" element={<NotFound />} />
       </Route>
