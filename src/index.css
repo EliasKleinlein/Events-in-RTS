@@ -1,2 +1,27 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+/* Leaflet overrides START */
+.leaflet-layer,
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.leaflet-container .leaflet-control-attribution {
+  background: var(--color-base-300);
+  color: color-mix(in oklch, var(--color-base-content) 50%, transparent);
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--color-base-300);
+  color: var(--color-base-content);
+  border: 1px var(--color-primary) solid;
+}
+
+.leaflet-popup-tip {
+  background: var(--color-base-300);
+  color: var(--color-base-content);
+  border: 1px var(--color-primary) solid;
+}
+/* Leaflet overrides END */
