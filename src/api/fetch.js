@@ -34,10 +34,10 @@ export const apiFetch = async (endpoint, options = {}) => {
   return data;
 };
 
-export const getEvents = async () => {
-  const data = await apiFetch("/events?page=1&limit=10");
+export const getEvents = async (page) => {
+  const data = await apiFetch(`/events?page=${page}&limit=10`);
 
-  return data.results;
+  return data;
 };
 export const getEventById = async (eventId) => {
   const data = await apiFetch(`/events/${eventId}`);
