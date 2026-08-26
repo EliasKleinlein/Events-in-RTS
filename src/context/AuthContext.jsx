@@ -1,6 +1,7 @@
 // src/context/AuthContext.jsx
 import { createContext, useState } from "react";
 
+import { loginUser, registerUser } from "../api/fetch";
 import { getToken, removeToken, setToken } from "../utils/tokenStorage";
 
 const AuthContext = createContext(null);
@@ -9,15 +10,19 @@ const AuthProvider = ({ children }) => {
   const [token, setTokenState] = useState(() => getToken());
   const [user, setUser] = useState(null);
 
-  const login = (email, password) => {
-    const { user, token } = {}; //TODO: login api call with email and password -> should return user obj and token
+  const login = async (email, password) => {
+    const { user, token } = await loginUser(email, password);
+
     setToken(token);
     setTokenState(token);
     setUser(user);
+
+    return user;
   };
 
-  const register = (email, password) => {
-    //TODO: register api call with email and password
+  const register = async (email, password) => {
+    const user = await registerUser(email, password);
+    return user;
   };
 
   const logout = () => {
