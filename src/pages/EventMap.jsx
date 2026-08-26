@@ -1,9 +1,22 @@
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 
 import { getEvents } from "../api/fetch";
+
+const FitBounds = ({ events }) => {
+  const map = useMap();
+
+  useEffect(() => {
+    if (events && events.length > 0) {
+      const points = events.map((event) => [event.latitude, event.longitude]);
+
+      const bounds = L.latLngBounds(points);
+      map.fitBounds(bounds, { padding: [5, 5], maxZoom: 15 });
+    }
+  }, [events, map]);
+};
 
 const EventMap = () => {
   const [events, setEvents] = useState([]);
@@ -31,14 +44,11 @@ const EventMap = () => {
     return <p className="text-center text-red-500">{error}</p>;
   }
 
-  const position = [52.500402, 13.446582];
   return (
-    <div className="mx-auto w-full max-w-2xl py-8">
+    <div className="mx-auto w-full max-w-6xl py-8">
       <MapContainer
-        center={position}
-        zoom={13}
         scrollWheelZoom={false}
-        style={{ height: "400px", width: "100%" }}
+        style={{ height: "80dvh", width: "100%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -47,7 +57,10 @@ const EventMap = () => {
         {events.map((event) => {
           if (event.latitude && event.longitude) {
             return (
-              <Marker position={[event.latitude, event.longitude]}>
+              <Marker
+                key={event.id}
+                position={[event.latitude, event.longitude]}
+              >
                 <Popup>
                   <div className="py-2 font-bold">{event.title}</div>
                   <div>
@@ -63,6 +76,7 @@ const EventMap = () => {
             );
           }
         })}
+        <FitBounds events={events} />
       </MapContainer>
     </div>
   );
