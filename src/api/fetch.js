@@ -34,7 +34,12 @@ export const apiFetch = async (endpoint, options = {}) => {
   return data;
 };
 
-export const getEvents = async (page) => {
+export const getUpcomingEvents = async () => {
+  const data = await apiFetch(`/events/upcoming`);
+
+  return data;
+};
+export const getAllEvents = async (page) => {
   const data = await apiFetch(`/events?page=${page}&limit=10`);
 
   return data;
