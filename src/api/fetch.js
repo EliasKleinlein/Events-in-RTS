@@ -23,12 +23,12 @@ export const apiFetch = async (endpoint, options = {}) => {
   try {
     response = await fetch(`${API_URL}${endpoint}`, options);
   } catch {
-    throw new Error("API nicht erreichbar.");
+    throw new Error("No API.");
   }
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(`API-Fehler: ${response.status} ${data.error}`);
+    throw new Error(`API failed: ${response.status} ${data.error}`);
   }
 
   return data;
