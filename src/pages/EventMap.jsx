@@ -2,6 +2,7 @@ import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import { useEffect } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
+import { Link } from "react-router";
 
 import { getUpcomingEvents } from "../api/fetch";
 import { ZoomToMarker } from "../components/ZoomToMarker";
@@ -83,6 +84,9 @@ const EventMap = () => {
                     </ZoomToMarker>
                   </div>
                   <div className="py-2">{event.description}</div>
+                  <Link to={`/eventsdetails/${event.id}`}>
+                    <span className="btn btn-xs btn-primary">Details</span>
+                  </Link>
                 </Popup>
               </Marker>
             );

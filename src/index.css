@@ -14,13 +14,13 @@
 }
 
 .leaflet-popup-content-wrapper {
-  background: var(--color-base-300);
+  background: var(--color-base-200);
   color: var(--color-base-content);
   border: 1px var(--color-primary) solid;
 }
 
 .leaflet-popup-tip {
-  background: var(--color-base-300);
+  background: var(--color-base-200);
   color: var(--color-base-content);
   border: 1px var(--color-primary) solid;
 }

@@ -74,7 +74,8 @@ const EventDetails = () => {
               style={{
                 height: "200px",
                 width: "100%",
-                background: "#1a1a1a",
+                background: "var(--color-base-200)",
+                border: "var(--color-base-300) 2px solid",
               }}
             >
               <TileLayer
