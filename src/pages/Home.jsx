@@ -218,7 +218,7 @@ const Home = () => {
             <Link
               key={event.id}
               to={`/eventsdetails/${event.id}`}
-              className="card card-side border-base-300 bg-base-100 overflow-hidden border shadow-sm transition-shadow hover:shadow-xl"
+              className="card card-side border-base-300 bg-base-200 overflow-hidden border shadow-sm transition-shadow hover:shadow-xl"
             >
               <figure className="w-32 shrink-0 sm:w-40">
                 <img

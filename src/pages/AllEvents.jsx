@@ -37,34 +37,44 @@ const AllEvents = () => {
     loadEvents();
   }, [page]);
   if (isLoading) {
-    return <p className="py-20 text-center text-base-content/70">Events werden geladen …</p>;
+    return (
+      <p className="text-base-content/70 py-20 text-center">
+        Events werden geladen …
+      </p>
+    );
   }
 
   if (error) {
-    return <p className="py-20 text-center text-error">{error}</p>;
+    return <p className="text-error py-20 text-center">{error}</p>;
   }
 
   return (
     <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-10 sm:py-14">
       <section className="mb-10 max-w-2xl">
-        <div className="badge badge-primary badge-outline rounded-full">Explore the city</div>
-        <h1 className="mt-4 font-serif text-5xl font-semibold leading-tight sm:text-6xl">All Events</h1>
-        <p className="mt-4 text-base leading-7 text-base-content/70">
+        <div className="badge badge-primary badge-outline rounded-full">
+          Explore the city
+        </div>
+        <h1 className="mt-4 font-serif text-5xl leading-tight font-semibold sm:text-6xl">
+          All Events
+        </h1>
+        <p className="text-base-content/70 mt-4 text-base leading-7">
           Find your next memorable experience, one event at a time.
         </p>
       </section>
 
       <div className="join mb-8 flex justify-center">
         <button
-          className="join-item btn btn-outline rounded-l-full px-5"
+          className="join-item btn rounded-l-full px-5"
           disabled={!hasPage.previous}
           onClick={() => setPage((p) => p - 1)}
         >
           <PreviousArrowsIcon />
         </button>
-        <span className="join-item btn pointer-events-none bg-base-100">Page {page}</span>
+        <span className="join-item btn bg-base-100 pointer-events-none">
+          Page {page}
+        </span>
         <button
-          className="join-item btn btn-primary rounded-r-full px-5"
+          className="join-item btn rounded-r-full px-5"
           disabled={!hasPage.next}
           onClick={() => setPage((p) => p + 1)}
         >
@@ -76,15 +86,21 @@ const AllEvents = () => {
           <Link
             key={event.id}
             to={`/eventsdetails/${event.id}`}
-            className="card card-side overflow-hidden border border-base-300 bg-base-100 shadow-sm transition-shadow hover:shadow-xl"
+            className="card card-side border-base-300 bg-base-200 overflow-hidden border shadow-sm transition-shadow hover:shadow-xl"
           >
             <figure className="w-32 shrink-0 sm:w-40">
-              <img src={placeholderImages[index % placeholderImages.length]} alt="Event placeholder" className="h-full w-full object-cover" />
+              <img
+                src={placeholderImages[index % placeholderImages.length]}
+                alt="Event placeholder"
+                className="h-full w-full object-cover"
+              />
             </figure>
             <div className="card-body min-h-36 gap-2 p-4">
-              <h2 className="card-title font-serif text-xl font-semibold">{event.title}</h2>
-              <p className="text-sm text-base-content/70">{event.location}</p>
-              <p className="text-sm text-base-content/70">
+              <h2 className="card-title font-serif text-xl font-semibold">
+                {event.title}
+              </h2>
+              <p className="text-base-content/70 text-sm">{event.location}</p>
+              <p className="text-base-content/70 text-sm">
                 {new Date(event.date).toLocaleString("de-DE", {
                   dateStyle: "medium",
                   timeStyle: "short",
@@ -96,15 +112,17 @@ const AllEvents = () => {
       </section>
       <div className="join mt-8 flex justify-center">
         <button
-          className="join-item btn btn-outline rounded-l-full px-5"
+          className="join-item btn rounded-l-full px-5"
           disabled={!hasPage.previous}
           onClick={() => setPage((p) => p - 1)}
         >
           <PreviousArrowsIcon />
         </button>
-        <span className="join-item btn pointer-events-none bg-base-100">Page {page}</span>
+        <span className="join-item btn bg-base-100 pointer-events-none">
+          Page {page}
+        </span>
         <button
-          className="join-item btn btn-primary rounded-r-full px-5"
+          className="join-item btn rounded-r-full px-5"
           disabled={!hasPage.next}
           onClick={() => setPage((p) => p + 1)}
         >

@@ -34,7 +34,7 @@ const Register = () => {
   };
   return (
     <div className="mx-auto w-full max-w-md px-5 py-12 sm:py-16">
-      <form onSubmit={handleSubmit} className="card bg-base-100 shadow-xl">
+      <form onSubmit={handleSubmit} className="card bg-base-200 shadow-xl">
         <fieldset className="fieldset gap-3 p-7 sm:p-10">
           <legend className="fieldset-legend font-serif text-4xl font-semibold normal-case">
             Create account
