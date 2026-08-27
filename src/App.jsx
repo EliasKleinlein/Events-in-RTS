@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import MainLayout from "./layouts/MainLayout";
+import AllEvents from "./pages/AllEvents";
 import CreateEvents from "./pages/CreateEvents";
 import EventMap from "./pages/EventMap";
 import EventDetails from "./pages/EventsDetails";
@@ -27,6 +28,7 @@ const App = () => {
         />
         <Route path="/eventsdetails/:eventid" element={<EventDetails />} />
         <Route path="/map" element={<EventMap />} />
+        <Route path="/all-events" element={<AllEvents />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

@@ -11,6 +11,12 @@ const Header = () => {
           <Link to="/" className="btn btn-ghost">
             Home
           </Link>
+          <Link to="/all-events" className="btn btn-ghost">
+            All Events
+          </Link>
+          <Link to="/map" className="btn btn-ghost">
+            Map
+          </Link>
         </div>
         <div className="navbar-center">
           <a className="btn btn-ghost text-xl">Event Scheduler</a>
