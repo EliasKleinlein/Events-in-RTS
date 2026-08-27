@@ -74,18 +74,20 @@ const CreateEvents = () => {
   };
 
   return (
-    <div className="mx-auto max-w-6xl py-8">
+    <div className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-10 sm:py-14">
       <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box mx-4 border p-4 xl:mx-auto">
-          <legend className="fieldset-legend text-xl">Create New Event</legend>
-          <div className="flex flex-col sm:flex-row sm:gap-8">
-            <div className="max-w-sm">
+        <fieldset className="fieldset rounded-box bg-base-100 p-6 shadow-xl sm:p-10">
+          <legend className="fieldset-legend font-serif text-4xl font-semibold normal-case">
+            Create New Event
+          </legend>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+            <div className="w-full">
               <label className="label" htmlFor="title">
                 Title
               </label>
               <input
                 type="text"
-                className="input mb-2 w-full"
+                className="input input-bordered bg-base-100 mb-3 w-full"
                 name="title"
                 id="title"
                 value={formData.title}
@@ -96,7 +98,7 @@ const CreateEvents = () => {
               </label>
               <input
                 type="datetime-local"
-                className="input mb-2 w-full"
+                className="input input-bordered bg-base-100 mb-3 w-full"
                 name="date"
                 id="date"
                 value={formData.date}
@@ -107,7 +109,7 @@ const CreateEvents = () => {
               </label>
               <input
                 type="text"
-                className="input mb-2 w-full"
+                className="input input-bordered bg-base-100 mb-3 w-full"
                 name="location"
                 id="location"
                 value={formData.location}
@@ -116,12 +118,7 @@ const CreateEvents = () => {
               <MapContainer
                 center={[0, 0]}
                 zoom={0}
-                style={{
-                  height: "256px",
-                  width: "100%",
-                  background: "var(--color-base-200)",
-                  border: "var(--color-base-300) 2px solid",
-                }}
+                className="rounded-box border-base-300 bg-base-200 h-64 w-full border"
               >
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -138,27 +135,27 @@ const CreateEvents = () => {
                 )}
               </MapContainer>
               {formData.latitude != null && (
-                <div className="mt-1 flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-                  <p className="label">
+                <div className="mt-2 flex flex-col justify-between gap-2 sm:flex-row sm:items-center">
+                  <p className="text-base-content/70 text-sm">
                     Picked: {formData.latitude.toFixed(6)},{" "}
                     {formData.longitude.toFixed(6)}
                   </p>
                   <button
                     type="button"
                     onClick={handleRemoveMarker}
-                    className="btn btn-error btn-xs max-w-fit"
+                    className="btn btn-error btn-xs rounded-full"
                   >
                     Remove Marker
                   </button>
                 </div>
               )}
             </div>
-            <div className="mt-4 grow sm:mt-0 sm:pb-4">
+            <div className="flex min-h-72 flex-col">
               <label className="label" htmlFor="description">
                 Description
               </label>
               <textarea
-                className="textarea w-full sm:h-full"
+                className="textarea textarea-bordered bg-base-100 h-64 w-full grow lg:h-auto"
                 name="description"
                 id="description"
                 value={formData.description}
@@ -166,11 +163,14 @@ const CreateEvents = () => {
               />
             </div>
           </div>
-          <button className="btn btn-primary mt-4" disabled={isLoading}>
+          <button
+            className="btn btn-primary mt-6 rounded-full px-6 normal-case"
+            disabled={isLoading}
+          >
             {isLoading ? "Submitting..." : "Submit"}
           </button>
           {error && (
-            <div role="alert" className="alert alert-error alert-soft">
+            <div role="alert" className="alert alert-error alert-soft mt-4">
               <span>{error}</span>
             </div>
           )}

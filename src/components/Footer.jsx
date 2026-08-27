@@ -1,37 +1,37 @@
 const Footer = () => {
   return (
-    <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10">
+    <footer className="footer grid gap-8 bg-base-200 px-6 py-12 text-base-content md:grid-cols-4 sm:px-10">
       <nav>
-        <h6 className="footer-title">Services</h6>
-        <a className="link link-hover">Branding</a>
-        <a className="link link-hover">Design</a>
-        <a className="link link-hover">Marketing</a>
-        <a className="link link-hover">Advertisement</a>
+        <h6 className="footer-title font-serif text-xl font-semibold normal-case">Services</h6>
+        <a className="link link-hover text-base-content/70">Branding</a>
+        <a className="link link-hover text-base-content/70">Design</a>
+        <a className="link link-hover text-base-content/70">Marketing</a>
+        <a className="link link-hover text-base-content/70">Advertisement</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Company</h6>
-        <a className="link link-hover">About us</a>
-        <a className="link link-hover">Contact</a>
-        <a className="link link-hover">Jobs</a>
-        <a className="link link-hover">Press kit</a>
+        <h6 className="footer-title font-serif text-xl font-semibold normal-case">Company</h6>
+        <a className="link link-hover text-base-content/70">About us</a>
+        <a className="link link-hover text-base-content/70">Contact</a>
+        <a className="link link-hover text-base-content/70">Jobs</a>
+        <a className="link link-hover text-base-content/70">Press kit</a>
       </nav>
       <nav>
-        <h6 className="footer-title">Legal</h6>
-        <a className="link link-hover">Terms of use</a>
-        <a className="link link-hover">Privacy policy</a>
-        <a className="link link-hover">Cookie policy</a>
+        <h6 className="footer-title font-serif text-xl font-semibold normal-case">Legal</h6>
+        <a className="link link-hover text-base-content/70">Terms of use</a>
+        <a className="link link-hover text-base-content/70">Privacy policy</a>
+        <a className="link link-hover text-base-content/70">Cookie policy</a>
       </nav>
-      <form>
-        <h6 className="footer-title">Newsletter</h6>
-        <fieldset className="w-80">
-          <label>Enter your email address</label>
-          <div className="join">
+      <form className="md:justify-self-end">
+        <h6 className="footer-title font-serif text-xl font-semibold normal-case">Newsletter</h6>
+        <fieldset className="w-full max-w-80">
+          <label className="mb-3 block text-sm text-base-content/70">Enter your email address</label>
+          <div className="join w-full">
             <input
               type="text"
               placeholder="username@site.com"
-              className="input join-item"
+              className="input input-bordered join-item w-full bg-base-100"
             />
-            <button className="btn btn-primary join-item">Subscribe</button>
+            <button className="btn btn-primary join-item rounded-r-full px-5 normal-case">Subscribe</button>
           </div>
         </fieldset>
       </form>
