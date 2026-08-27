@@ -51,7 +51,12 @@ const EventMap = () => {
     <div className="mx-auto w-full max-w-6xl py-8">
       <MapContainer
         scrollWheelZoom={false}
-        style={{ height: "80dvh", width: "100%", background: "#1a1a1a" }}
+        style={{
+          height: "80dvh",
+          width: "100%",
+          background: "var(--color-base-200)",
+          border: "var(--color-base-300) 2px solid",
+        }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
