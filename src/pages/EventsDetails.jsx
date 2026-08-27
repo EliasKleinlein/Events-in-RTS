@@ -47,14 +47,14 @@ const EventDetails = () => {
           <div className="flex-1">
             <h1 className="card-title text-3xl">{event.title}</h1>
             {event.description && <p className="py-4">{event.description}</p>}
-            <p>
+            <p className="text-base-content/50">
               <DateIcon className="text-primary inline pr-2" />
               {new Date(event.date).toLocaleString("de-DE", {
                 dateStyle: "medium",
                 timeStyle: "short",
               })}
             </p>
-            <p>
+            <p className="text-base-content/50">
               <LocationIcon className="text-primary inline pr-2" />
               {event.location}
             </p>
