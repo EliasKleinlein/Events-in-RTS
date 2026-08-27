@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 
-import { getEvents } from "../api/fetch";
+import { getUpcomingEvents } from "../api/fetch";
 import { ZoomToMarker } from "../components/ZoomToMarker";
 import { DateIcon } from "../components/icons/DateIcon";
 import { LocationIcon } from "../components/icons/LocationIcon";
@@ -28,7 +28,7 @@ const EventMap = () => {
   useEffect(() => {
     const loadEvents = async () => {
       try {
-        const data = await getEvents();
+        const data = await getUpcomingEvents();
         setEvents(data);
       } catch (error) {
         setError(error.message);
