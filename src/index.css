@@ -2,12 +2,10 @@
 @plugin "daisyui";
 
 /* Leaflet overrides START */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .leaflet-layer,
-  :root:not([data-theme="light"]) .leaflet-control-zoom-in,
-  :root:not([data-theme="light"]) .leaflet-control-zoom-out {
-    filter: invert(1) hue-rotate(180deg);
-  }
+[data-theme="dark"] .leaflet-layer,
+[data-theme="dark"] .leaflet-control-zoom-in,
+[data-theme="dark"] .leaflet-control-zoom-out {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 .leaflet-container .leaflet-control-attribution {
