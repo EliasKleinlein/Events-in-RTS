@@ -33,10 +33,12 @@ const Register = () => {
     }
   };
   return (
-    <div className="mx-auto max-w-sm py-8">
-      <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset bg-base-200 border-base-300 rounded-box border p-4">
-          <legend className="fieldset-legend text-xl">Register</legend>
+    <div className="mx-auto w-full max-w-md px-5 py-12 sm:py-16">
+      <form onSubmit={handleSubmit} className="card bg-base-100 shadow-xl">
+        <fieldset className="fieldset gap-3 p-7 sm:p-10">
+          <legend className="fieldset-legend font-serif text-4xl font-semibold normal-case">
+            Create account
+          </legend>
 
           <label className="label" htmlFor="email">
             Email
@@ -45,7 +47,7 @@ const Register = () => {
             id="email"
             name="email"
             type="email"
-            className="input w-full"
+            className="input input-bordered bg-base-100 w-full"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             autoComplete="email"
@@ -59,7 +61,7 @@ const Register = () => {
             id="password"
             name="password"
             type="password"
-            className="input w-full"
+            className="input input-bordered bg-base-100 w-full"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             autoComplete="new-password"
@@ -74,7 +76,7 @@ const Register = () => {
             id="confirmPassword"
             name="confirmPassword"
             type="password"
-            className="input w-full"
+            className="input input-bordered bg-base-100 w-full"
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
             autoComplete="new-password"
@@ -90,7 +92,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="btn btn-primary mt-4 w-full"
+            className="btn btn-primary mt-5 w-full rounded-full normal-case"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Creating account..." : "Register"}

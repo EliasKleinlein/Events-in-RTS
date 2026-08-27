@@ -27,67 +27,71 @@ const EventDetails = () => {
     loadEvent();
   }, [eventid]);
   if (isLoading) {
-    return <p className="text-center">Loading Event...</p>;
+    return <p className="py-20 text-center text-base-content/70">Loading Event...</p>;
   }
 
   if (error) {
-    return <p className="text-center text-red-500">{error}</p>;
+    return <p className="py-20 text-center text-error">{error}</p>;
   }
 
   if (!event) {
-    return <p className="text-center">Event not found.</p>;
+    return <p className="py-20 text-center text-base-content/70">Event not found.</p>;
   }
 
   const position = [event.latitude, event.longitude];
 
   return (
-    <article className="card bg-base-200 mx-4 my-8 max-w-2xl shadow-xl sm:mx-auto">
-      <div className="card-body">
-        <div className="flex flex-col gap-6 sm:flex-row lg:items-stretch lg:justify-between">
-          <div className="flex-1">
-            <h1 className="card-title text-3xl">{event.title}</h1>
-            {event.description && <p className="py-4">{event.description}</p>}
-            <p className="text-base-content/50">
-              <DateIcon className="text-primary inline pr-2" />
-              {new Date(event.date).toLocaleString("de-DE", {
-                dateStyle: "medium",
-                timeStyle: "short",
-              })}
-            </p>
-            <p className="text-base-content/50">
-              <LocationIcon className="text-primary inline pr-2" />
-              {event.location}
-            </p>
+    <div className="mx-auto w-full max-w-5xl px-5 py-10 sm:px-10 sm:py-14">
+      <article className="card overflow-hidden bg-base-100 shadow-xl">
+        <figure className="h-64 sm:h-80">
+          <img
+            src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1600&q=80"
+            alt="Event atmosphere"
+            className="h-full w-full object-cover"
+          />
+        </figure>
+        <div className="card-body gap-8 p-6 sm:p-10">
+          <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
+            <div className="max-w-2xl">
+              <div className="badge badge-primary badge-outline rounded-full">Upcoming Event</div>
+              <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight sm:text-5xl">{event.title}</h1>
+              {event.description && <p className="mt-6 leading-7 text-base-content/70">{event.description}</p>}
+              <div className="mt-6 space-y-3">
+                <p className="flex items-center gap-2 text-base-content/70">
+                  <DateIcon className="text-primary" />
+                  {new Date(event.date).toLocaleString("de-DE", {
+                    dateStyle: "medium",
+                    timeStyle: "short",
+                  })}
+                </p>
+                <p className="flex items-center gap-2 text-base-content/70">
+                  <LocationIcon className="text-primary" />
+                  {event.location}
+                </p>
+              </div>
+            </div>
+            <div className="card-actions shrink-0 items-start gap-3 lg:flex-col lg:items-stretch">
+              <button className="btn btn-primary btn-circle" aria-label="Add event">
+                +
+              </button>
+              <button className="btn btn-accent rounded-full px-6 normal-case">Buy Tickets</button>
+            </div>
           </div>
-          <div className="flex flex-row items-end gap-3 sm:flex-col sm:justify-between">
-            <button className="btn btn-primary w-10">+</button>
-            <button className="btn btn-accent w-30">Buy Tickets</button>
-          </div>
-        </div>
 
-        {position[0] && position[1] && (
-          <div className="py-2">
-            <MapContainer
-              center={position}
-              zoom={13}
-              scrollWheelZoom={false}
-              style={{
-                height: "200px",
-                width: "100%",
-                background: "var(--color-base-200)",
-                border: "var(--color-base-300) 2px solid",
-              }}
-            >
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={position} />
-            </MapContainer>
-          </div>
-        )}
-      </div>
-    </article>
+          {position[0] && position[1] && (
+            <div className="overflow-hidden rounded-box border border-base-300">
+              <MapContainer center={position} zoom={13} scrollWheelZoom={false} className="h-52 w-full bg-base-200">
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                <Marker position={position} />
+              </MapContainer>
+            </div>
+          )}
+        </div>
+      </article>
+    </div>
   );
 };
 
