@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
 import { getAllEvents } from "../api/fetch";
+import { NextArrowsIcon } from "../components/icons/NextArrowsIcon";
+import { PreviousArrowsIcon } from "../components/icons/PreviousArrowsIcon";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
@@ -41,7 +43,7 @@ const AllEvents = () => {
           disabled={!hasPage.previous}
           onClick={() => setPage((p) => p - 1)}
         >
-          Previous Page
+          <PreviousArrowsIcon />
         </button>
         <span className="join-item btn pointer-events-none">Page {page}</span>
         <button
@@ -49,7 +51,7 @@ const AllEvents = () => {
           disabled={!hasPage.next}
           onClick={() => setPage((p) => p + 1)}
         >
-          Next Page
+          <NextArrowsIcon />
         </button>
       </div>
       <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
@@ -78,7 +80,7 @@ const AllEvents = () => {
           disabled={!hasPage.previous}
           onClick={() => setPage((p) => p - 1)}
         >
-          Previous Page
+          <PreviousArrowsIcon />
         </button>
         <span className="join-item btn pointer-events-none">Page {page}</span>
         <button
@@ -86,7 +88,7 @@ const AllEvents = () => {
           disabled={!hasPage.next}
           onClick={() => setPage((p) => p + 1)}
         >
-          Next Page
+          <NextArrowsIcon />
         </button>
       </div>
     </div>
