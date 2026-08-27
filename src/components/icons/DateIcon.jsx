@@ -1,4 +1,4 @@
-const DateIcon = () => {
+const DateIcon = ({ className = "" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ const DateIcon = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="inline pr-2"
+      className={className}
     >
       <g transform="scale(1.33333)">
         <line

@@ -1,4 +1,4 @@
-const LocationIcon = () => {
+const LocationIcon = ({ className = "" }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,7 +6,7 @@ const LocationIcon = () => {
       height="24"
       viewBox="0 0 24 24"
       fill="none"
-      className="inline pr-2"
+      className={className}
     >
       <path
         fillRule="evenodd"

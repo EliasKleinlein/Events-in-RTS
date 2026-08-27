@@ -65,7 +65,7 @@ const EventMap = () => {
                 <Popup>
                   <div className="py-2 font-bold">{event.title}</div>
                   <div className="text-base-content/50 py-1">
-                    <DateIcon />
+                    <DateIcon className="text-primary inline pr-2" />
                     {new Date(event.date).toLocaleString("de-DE", {
                       dateStyle: "medium",
                       timeStyle: "short",
@@ -73,7 +73,7 @@ const EventMap = () => {
                   </div>
                   <div className="text-base-content/50 py-1">
                     <ZoomToMarker position={position}>
-                      <LocationIcon />
+                      <LocationIcon className="text-primary inline pr-2" />
                       {event.location}
                     </ZoomToMarker>
                   </div>

@@ -46,14 +46,14 @@ const EventDetails = () => {
         <h1 className="card-title text-3xl">{event.title}</h1>
         {event.description && <p className="py-4">{event.description}</p>}
         <p>
-          <DateIcon />
+          <DateIcon className="text-primary inline pr-2" />
           {new Date(event.date).toLocaleString("de-DE", {
             dateStyle: "medium",
             timeStyle: "short",
           })}
         </p>
         <p>
-          <LocationIcon />
+          <LocationIcon className="text-primary inline pr-2" />
           {event.location}
         </p>
         {position[0] && position[1] && (
