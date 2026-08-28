@@ -99,7 +99,7 @@ const Home = () => {
   if (isLoading) {
     return (
       <p className="text-base-content/70 py-20 text-center">
-        Events werden geladen …
+        Events loading...
       </p>
     );
   }
@@ -214,11 +214,11 @@ const Home = () => {
           </Link>
         </div>
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-          {events.map((event, index) => (
+          {events.slice(0, 10).map((event, index) => (
             <Link
               key={event.id}
               to={`/eventsdetails/${event.id}`}
-              className="card card-side border-base-300 bg-base-100 overflow-hidden border shadow-sm transition-shadow hover:shadow-xl"
+              className="card card-side border-base-300 bg-base-200 overflow-hidden border shadow-sm transition-shadow hover:shadow-xl"
             >
               <figure className="w-32 shrink-0 sm:w-40">
                 <img

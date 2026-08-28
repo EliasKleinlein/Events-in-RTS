@@ -75,8 +75,8 @@ const CreateEvents = () => {
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 sm:px-10 sm:py-14">
-      <form onSubmit={handleSubmit}>
-        <fieldset className="fieldset rounded-box bg-base-100 p-6 shadow-xl sm:p-10">
+      <form onSubmit={handleSubmit} className="card bg-base-200 shadow-xl">
+        <fieldset className="fieldset rounded-box bg-base-200 p-6 shadow-xl sm:p-10">
           <legend className="fieldset-legend font-serif text-4xl font-semibold normal-case">
             Create New Event
           </legend>
