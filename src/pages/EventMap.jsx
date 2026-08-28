@@ -51,7 +51,6 @@ const EventMap = () => {
   return (
     <div className="mx-auto w-full max-w-6xl py-8">
       <MapContainer
-        scrollWheelZoom={false}
         style={{
           height: "80dvh",
           width: "100%",
