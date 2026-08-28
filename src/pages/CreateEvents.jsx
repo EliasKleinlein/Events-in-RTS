@@ -1,9 +1,20 @@
+import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import iconUrl from "leaflet/dist/images/marker-icon.png";
+import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import { MapContainer, Marker, TileLayer, useMapEvents } from "react-leaflet";
 import { useNavigate } from "react-router";
 
 import { createEvent } from "../api/fetch";
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+});
 
 const PickHandler = ({ onPick }) => {
   useMapEvents({
