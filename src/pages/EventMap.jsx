@@ -1,3 +1,6 @@
+import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
+import iconUrl from "leaflet/dist/images/marker-icon.png";
+import shadowUrl from "leaflet/dist/images/marker-shadow.png";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -8,6 +11,14 @@ import { getUpcomingEvents } from "../api/fetch";
 import { ZoomToMarker } from "../components/ZoomToMarker";
 import { DateIcon } from "../components/icons/DateIcon";
 import { LocationIcon } from "../components/icons/LocationIcon";
+
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl,
+});
 
 const FitBounds = ({ events }) => {
   const map = useMap();
