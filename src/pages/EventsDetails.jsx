@@ -37,9 +37,7 @@ const EventDetails = () => {
   }
 
   if (!event) {
-    return (
-      <p className="text-base-content/70 py-20 text-center">Event not found.</p>
-    );
+    return <p className="text-error py-20 text-center">Event not found.</p>;
   }
 
   const position = [event.latitude, event.longitude];
@@ -100,7 +98,6 @@ const EventDetails = () => {
               <MapContainer
                 center={position}
                 zoom={13}
-                scrollWheelZoom={false}
                 className="bg-base-200 h-52 w-full"
               >
                 <TileLayer
