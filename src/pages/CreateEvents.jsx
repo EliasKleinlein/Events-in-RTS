@@ -19,7 +19,9 @@ L.Icon.Default.mergeOptions({
 const PickHandler = ({ onPick }) => {
   useMapEvents({
     click(e) {
-      onPick({ lat: e.latlng.lat, lng: e.latlng.lng });
+      // Wrap the LatLng object to keep longitude between -180 and 180
+      const wrappedLatLng = e.latlng.wrap();
+      onPick({ lat: wrappedLatLng.lat, lng: wrappedLatLng.lng });
     },
   });
   return null;
@@ -128,12 +130,18 @@ const CreateEvents = () => {
               />
               <MapContainer
                 center={[0, 0]}
-                zoom={0}
+                zoom={2}
                 className="rounded-box border-base-300 bg-base-200 h-64 w-full border"
+                maxBounds={[
+                  [-90, -180],
+                  [90, 180],
+                ]}
+                maxBoundsViscosity={1.0}
               >
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  noWrap={true}
                 />
                 <PickHandler onPick={handlePick} />
                 {formData.latitude != null && (
