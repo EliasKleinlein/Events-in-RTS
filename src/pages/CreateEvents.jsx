@@ -130,12 +130,18 @@ const CreateEvents = () => {
               />
               <MapContainer
                 center={[0, 0]}
-                zoom={0}
+                zoom={2}
                 className="rounded-box border-base-300 bg-base-200 h-64 w-full border"
+                maxBounds={[
+                  [-90, -180],
+                  [90, 180],
+                ]}
+                maxBoundsViscosity={1.0}
               >
                 <TileLayer
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  noWrap={true}
                 />
                 <PickHandler onPick={handlePick} />
                 {formData.latitude != null && (
