@@ -19,7 +19,9 @@ L.Icon.Default.mergeOptions({
 const PickHandler = ({ onPick }) => {
   useMapEvents({
     click(e) {
-      onPick({ lat: e.latlng.lat, lng: e.latlng.lng });
+      // Wrap the LatLng object to keep longitude between -180 and 180
+      const wrappedLatLng = e.latlng.wrap();
+      onPick({ lat: wrappedLatLng.lat, lng: wrappedLatLng.lng });
     },
   });
   return null;
